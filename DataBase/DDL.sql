@@ -1,7 +1,4 @@
-create database PROCESSO2RP;
-go
-
-use PROCESSO2RP;
+use BancoProj2rp;
 go
 
 create table tipoUsuario(
@@ -15,7 +12,7 @@ idUsuario smallint primary key identity,
 idTipoUsuario smallint foreign key references tipoUsuario(idTipoUsuario) not null,
 nome varchar(50) not null,
 email varchar(150) not null unique,
-senha varchar(30) not null,
+senha varchar(32) not null,
 status bit not null
 );
 go

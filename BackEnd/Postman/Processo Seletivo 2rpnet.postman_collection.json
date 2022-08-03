@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "8867bea6-8989-42a8-aa0d-732b44bba389",
+		"name": "Processo Seletivo 2rpnet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"caiosoares@2rpnet.com\",\r\n  \"senha\": \"04123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5222/api/Login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5222",
+					"path": [
+						"api",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Usuário",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhaW9zb2FyZXNAMnJwbmV0LmNvbSIsIm5hbWUiOiJDYWlvIFNvYXJlcyIsImp0aSI6IjEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIxIiwicm9sZSI6IjEiLCJleHAiOjE2NTkzOTE1NTIsImlzcyI6IlByb2pldG8ycnBfV2ViQXBpIiwiYXVkIjoiUHJvamV0bzJycF9XZWJBcGkifQ.UVx7PiUzpKD-Jy5NnGn-sugaDYFmoKPXx4fGemne4LM\"",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5222/api/Usuarios/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5222",
+					"path": [
+						"api",
+						"Usuarios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar Usuário",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhaW9zb2FyZXNAMnJwbmV0LmNvbSIsIm5hbWUiOiJDYWlvIFNvYXJlcyIsImp0aSI6IjEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIxIiwicm9sZSI6IjEiLCJleHAiOjE2NTk1NDYzMjIsImlzcyI6IlByb2pldG8ycnBfV2ViQXBpIiwiYXVkIjoiUHJvamV0bzJycF9XZWJBcGkifQ.4j0sarfl5QSXBWeRaDQCmixDZ-p6CCKlg8RL34VVHDc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"idTipoUsuario\": 2,\r\n  \"nome\": \"Matheus O. G.\",\r\n  \"email\": \"matheusog@2rpnet.com\",\r\n  \"senha\": \"2rp123\",\r\n  \"status\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5222/api/Usuarios/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5222",
+					"path": [
+						"api",
+						"Usuarios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Usuários",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhaW9zb2FyZXNAMnJwbmV0LmNvbSIsIm5hbWUiOiJDYWlvIFNvYXJlcyIsImp0aSI6IjEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIxIiwicm9sZSI6IjEiLCJleHAiOjE2NTk1NDYzMjIsImlzcyI6IlByb2pldG8ycnBfV2ViQXBpIiwiYXVkIjoiUHJvamV0bzJycF9XZWJBcGkifQ.4j0sarfl5QSXBWeRaDQCmixDZ-p6CCKlg8RL34VVHDc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5222/api/Usuarios/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5222",
+					"path": [
+						"api",
+						"Usuarios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Por Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhaW9zb2FyZXNAMnJwbmV0LmNvbSIsIm5hbWUiOiJDYWlvIFNvYXJlcyIsImp0aSI6IjEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIxIiwicm9sZSI6IjEiLCJleHAiOjE2NTkzOTE3OTUsImlzcyI6IlByb2pldG8ycnBfV2ViQXBpIiwiYXVkIjoiUHJvamV0bzJycF9XZWJBcGkifQ.G4UzUPRRqBPwCk3S4jqgLzln2rwR95qSnwkFCDI3zeM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5222/api/Usuarios/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5222",
+					"path": [
+						"api",
+						"Usuarios",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar Usuário",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhaW9zb2FyZXNAMnJwbmV0LmNvbSIsIm5hbWUiOiJDYWlvIFNvYXJlcyIsImp0aSI6IjEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIxIiwicm9sZSI6IjEiLCJleHAiOjE2NTk1NDYzMjIsImlzcyI6IlByb2pldG8ycnBfV2ViQXBpIiwiYXVkIjoiUHJvamV0bzJycF9XZWJBcGkifQ.4j0sarfl5QSXBWeRaDQCmixDZ-p6CCKlg8RL34VVHDc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idTipoUsuario\": 2,\r\n    \"nome\": \"Ligia Munhoz\",\r\n    \"email\": \"ligiamunhoz@2rpnet.com\",\r\n    \"status\": true\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5222/api/Usuarios/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5222",
+					"path": [
+						"api",
+						"Usuarios",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

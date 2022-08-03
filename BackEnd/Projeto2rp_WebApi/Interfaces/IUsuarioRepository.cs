@@ -1,4 +1,5 @@
 ﻿using Projeto2rp_WebApi.Domains;
+using Projeto2rp_WebApi.ViewModels;
 
 namespace Projeto2rp_WebApi.Interfaces
 {
@@ -10,9 +11,9 @@ namespace Projeto2rp_WebApi.Interfaces
 
         Usuario BuscarPorId(int idUsuario);
 
-        void Cadastrar(Usuario novoUsuario);
+        void Cadastrar(UserViewModel novoUsuario);
 
-        void Atualizar(int idUsuario, Usuario UsuarioAtualizado);
+        void Atualizar(int idUsuario, UserViewModel UsuarioAtualizado);
 
         void Deletar(int idUsuario);
     }

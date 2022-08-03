@@ -2,6 +2,7 @@
 using Projeto2rp_WebApi.Domains;
 
 using Projeto2rp_WebApi.Interfaces;
+using Projeto2rp_WebApi.ViewModels;
 
 namespace Projeto2rp_WebApi.Repositories
 {
@@ -78,7 +79,14 @@ namespace Projeto2rp_WebApi.Repositories
 
         public void Cadastrar(UserViewModel novoUsuario)
         {
-            ctx.Usuarios.Add(novoUsuario);
+            Usuario u = new Usuario();
+            u.Nome = novoUsuario.Nome;
+            u.Email = novoUsuario.Email;
+            u.Senha = novoUsuario.Senha;
+            u.Status = novoUsuario.Status;
+            u.IdTipoUsuario = novoUsuario.IdTipoUsuario;
+
+            ctx.Usuarios.Add(u);
 
             ctx.SaveChanges();
         }

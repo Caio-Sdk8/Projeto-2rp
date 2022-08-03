@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Projeto2rp_WebApi.Domains;
 using Projeto2rp_WebApi.Interfaces;
 using Projeto2rp_WebApi.Repositories;
+using Projeto2rp_WebApi.ViewModels;
 
 namespace Projeto2rp_WebApi.Controllers
 {
@@ -18,32 +19,32 @@ namespace Projeto2rp_WebApi.Controllers
             _UsuarioRepository = new UsuarioRepository();
         }
 
-        [Authorize(Roles = "1", "2")]
+        [Authorize(Roles = "1,2")]
         [HttpGet]
         public IActionResult Listar()
         {
             return Ok(_UsuarioRepository.Listar());
         }
 
-        [Authorize(Roles = "1", "2", "3")]
+        [Authorize(Roles = "1,2")]
         [HttpGet("{idUsuario}")]
         public IActionResult BuscarPorId(int idUsuario)
         {
             return Ok(_UsuarioRepository.BuscarPorId(idUsuario));
         }
 
-        [Authorize(Roles = "1", "2")]
+        [Authorize(Roles = "1,2")]
         [HttpPost]
-        public IActionResult Cadastrar(Usuario novoUsuario)
+        public IActionResult Cadastrar(UserViewModel novoUsuario)
         {
             _UsuarioRepository.Cadastrar(novoUsuario);
 
             return StatusCode(201);
         }
 
-        [Authorize(Roles = "1", "2", "3")]
+        [Authorize(Roles = "1,2,3")]
         [HttpPut("{idUsuario}")]
-        public IActionResult Atualizar(int idUsuario, Usuario UsuarioAtualizada)
+        public IActionResult Atualizar(int idUsuario, UserViewModel UsuarioAtualizada)
         {
             _UsuarioRepository.Atualizar(idUsuario, UsuarioAtualizada);
 

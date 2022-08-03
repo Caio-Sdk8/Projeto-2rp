@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,9 +12,9 @@ namespace Projeto2rp_WebApi.ViewModels
 
         [Required(ErrorMessage = "É necessário informar o tipo de usuario!")]
         public short IdTipoUsuario { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-        public string Senha { get; set; }
+        public string? Nome { get; set; }
+        public string? Email { get; set; }
+        public string? Senha { get; set; }
         [Required(ErrorMessage = "É necessário informar o status do usuario!")]
         public bool Status { get; set; }
     }

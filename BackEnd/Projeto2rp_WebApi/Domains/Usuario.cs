@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Projeto2rp_WebApi.Domains
 {
@@ -15,6 +16,6 @@ namespace Projeto2rp_WebApi.Domains
         [Required(ErrorMessage = "É necessário informar o status do usuario!")]
         public bool Status { get; set; }
 
-        public virtual TipoUsuario IdTipoUsuarioNavigation { get; set; };
+        public virtual TipoUsuario? IdTipoUsuarioNavigation { get; set; }
     }
 }

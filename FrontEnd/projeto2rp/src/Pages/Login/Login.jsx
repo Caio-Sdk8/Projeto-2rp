@@ -2,7 +2,7 @@ import { Component } from 'react';
 import axios from 'axios';
 import logo2rp from '../Imagens/LogoEscura.svg'
 import '../Login/Login.css'
-import { parseJwt} from '../../Services/auth';
+import { parseJwt } from '../../Services/auth';
 import { Link, Navigate } from 'react-router-dom';
 
 
@@ -13,7 +13,8 @@ export default class Login extends Component {
             email: '',
             senha: '',
             erroMensagem: '',
-            isLoading: false
+            isLoading: false,
+            redirect: false
         };
     };
 
@@ -31,76 +32,94 @@ export default class Login extends Component {
                 if (resposta.status === 200) {
                     localStorage.setItem('usuario-login', resposta.data.token);
                     this.setState({ isLoading: false });
-                    this.props.history.push('/ListarUsuarios');
+                    this.setState({ redirect: true });
                 }
-            })
-            .catch(() => {
-                this.setState({ erroMensagem: 'E-mail e/ou senha inválidos!', isLoading: false })
+                else {
+                    this.setState({ erroMensagem: 'E-mail e/ou senha inválidos!', isLoading: false })
+                }
             })
     };
 
+    confereRed = () => {
+        const { redirect } = this.state;
+
+        if (redirect) {
+            return <Navigate to='/ListarUsuarios' />;
+        }
+    }
+
+    componentDidMount(){
+        this.confereRed();
+    }
     atualizaStateCampo = (campo) => {
         this.setState({ [campo.target.name]: campo.target.value })
     };
 
     render() {
+        {
+            const { redirect } = this.state;
+
+            if (redirect) {
+                return <Navigate to='/ListarUsuarios' />;
+            }
+        }
         return (
             <div className='all'>
-                    <section className="container-login">
-                            <div className="row">
-                                <div className="item">
-                                    <img src={logo2rp} alt="" srcset="" />
-                                </div>
-                                <div className="item" id="item__title">
-                                    <p className="text__login" id="item__description">
-                                        Bem-vindo! Faça login para acessar sua conta.
-                                    </p>
-                                </div>
-                                <form onSubmit={this.efetuaLogin}>
-                                    <div className="item">
-                                        <input
-                                            className="input__login"
-                                            type="text"
-                                            name="email"
-                                            value={this.state.email}
-                                            onChange={this.atualizaStateCampo}
-                                            placeholder="Email"
-                                        />
-                                    </div>
-                                    <div className="item">
-                                        <input
-                                            className="input__login"
-                                            type="password"
-                                            name="senha"
-                                            value={this.state.senha}
-                                            onChange={this.atualizaStateCampo}
-                                            placeholder="Senha"
-                                        />
-                                    </div>
-                                    <div className="item">
-
-                                        <p style={{ color : 'red' }} >{this.state.erroMensagem}</p>
-
-                                        {
-                                            this.state.isLoading === true &&
-                                            <button type="submit" disabled className="btn btn__login" id="btn__login">
-                                                Loading...
-                                            </button>
-                                        }
-
-                                        {
-                                            this.state.isLoading === false &&
-                                            <button 
-                                                className="btn__login" id="btn__login"
-                                                type="submit"
-                                                disabled={ this.state.email === '' || this.state.senha === '' ? 'none' : '' }>
-                                                Login
-                                            </button>
-                                        }
-                                    </div>
-                                </form>
+                <section className="container-login">
+                    <div className="row">
+                        <div className="item">
+                            <img src={logo2rp} alt="" srcset="" />
+                        </div>
+                        <div className="item" id="item__title">
+                            <p className="text__login" id="item__description">
+                                Bem-vindo! Faça login para acessar sua conta.
+                            </p>
+                        </div>
+                        <form onSubmit={this.efetuaLogin}>
+                            <div className="item">
+                                <input
+                                    className="input__login"
+                                    type="text"
+                                    name="email"
+                                    value={this.state.email}
+                                    onChange={this.atualizaStateCampo}
+                                    placeholder="Email"
+                                />
                             </div>
-                    </section>
+                            <div className="item">
+                                <input
+                                    className="input__login"
+                                    type="password"
+                                    name="senha"
+                                    value={this.state.senha}
+                                    onChange={this.atualizaStateCampo}
+                                    placeholder="Senha"
+                                />
+                            </div>
+                            <div className="item">
+
+                                <p style={{ color: 'red' }} >{this.state.erroMensagem}</p>
+
+                                {
+                                    this.state.isLoading === true &&
+                                    <button type="submit" disabled className="btn btn__login" id="btn__login">
+                                        Loading...
+                                    </button>
+                                }
+
+                                {
+                                    this.state.isLoading === false &&
+                                    <button
+                                        className="btn__login" id="btn__login"
+                                        type="submit"
+                                        disabled={this.state.email === '' || this.state.senha === '' ? 'none' : ''}>
+                                        Login
+                                    </button>
+                                }
+                            </div>
+                        </form>
+                    </div>
+                </section>
             </div>
         )
     }

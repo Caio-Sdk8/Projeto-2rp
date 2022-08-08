@@ -1,0 +1,11 @@
+.Texto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.Texto p1{
+    font-size: 30px;
+}

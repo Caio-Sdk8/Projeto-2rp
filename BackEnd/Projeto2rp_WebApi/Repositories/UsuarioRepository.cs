@@ -64,8 +64,14 @@ namespace Projeto2rp_WebApi.Repositories
             {
                 usuarioBusc.Nome = UsuarioAtualizado.Nome;
             }
-            usuarioBusc.Status = UsuarioAtualizado.Status;
-            usuarioBusc.IdTipoUsuario = UsuarioAtualizado.IdTipoUsuario;
+            if (UsuarioAtualizado.IdTipoUsuario != 0)
+            {
+                usuarioBusc.IdTipoUsuario = UsuarioAtualizado.IdTipoUsuario;
+            }
+            if(UsuarioAtualizado.Status == true || UsuarioAtualizado.Status == false)
+            {
+                usuarioBusc.Status = UsuarioAtualizado.Status;
+            }
 
             ctx.Usuarios.Update(usuarioBusc);
 
@@ -102,7 +108,17 @@ namespace Projeto2rp_WebApi.Repositories
 
         public List<Usuario> Listar()
         {
-            return ctx.Usuarios.ToList();
+            return ctx.Usuarios.Select(x => new Usuario
+            {
+                IdUsuario = x.IdUsuario,
+                IdTipoUsuarioNavigation = new TipoUsuario
+                {
+                    TipoUsuario1 = x.IdTipoUsuarioNavigation.TipoUsuario1
+                },
+                Nome = x.Nome,
+                Email = x.Email,
+                Status = x.Status
+            }).ToList();
         }
     }
 }

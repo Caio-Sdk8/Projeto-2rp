@@ -26,7 +26,7 @@ namespace Projeto2rp_WebApi.Controllers
             return Ok(_UsuarioRepository.Listar());
         }
 
-        [Authorize(Roles = "1,2")]
+        [Authorize(Roles = "1,2,4")]
         [HttpGet("{idUsuario}")]
         public IActionResult BuscarPorId(int idUsuario)
         {
@@ -42,7 +42,7 @@ namespace Projeto2rp_WebApi.Controllers
             return StatusCode(201);
         }
 
-        [Authorize(Roles = "1,2,3")]
+        [Authorize(Roles = "1,2,4")]
         [HttpPut("{idUsuario}")]
         public IActionResult Atualizar(int idUsuario, UserViewModel UsuarioAtualizada)
         {

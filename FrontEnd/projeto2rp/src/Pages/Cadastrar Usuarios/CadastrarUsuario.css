@@ -1,0 +1,24 @@
+.secForm{
+    width: 50%;
+}
+
+label{
+    margin-top: 20px;
+}
+select{
+    border-radius: 7px;
+    width: 83%;
+    height: 30px;
+    border-color: 2px #17233C;
+    margin-top: 18px;
+    margin-left: 10px;
+}
+
+#align{
+    justify-content: space-between;
+}
+
+.cds{
+    font-size: 30px;
+    margin-top: 50px;
+}

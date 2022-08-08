@@ -3,7 +3,7 @@ import { Component } from 'react';
 import lixo from '../Imagens/icons8-lixo.svg'
 import "../ListarUsuarios/ListarUsuario.css"
 import Header from "../../Components/Header/Header.jsx";
-import { parseJwt} from '../../Services/auth'
+import { parseJwt } from '../../Services/auth'
 
 
 export default class ListarUsuarios extends Component {
@@ -25,7 +25,7 @@ export default class ListarUsuarios extends Component {
     }
 
     ListarUsers = () => {
-        this.state.Usuario =  parseJwt();
+        this.state.Usuario = parseJwt();
         this.state.Role = this.state.Usuario.role;
         var role = this.state.Role;
         console.log(this.state.Usuario)
@@ -109,13 +109,16 @@ export default class ListarUsuarios extends Component {
                                             <td>{Usuario.idTipoUsuarioNavigation.tipoUsuario1}</td>
                                             <td>{Usuario.status ? "Ativo" : "Inativo"}</td>
 
-                                            <td>
-                                                <button id='btnExc'
-                                                    onClick={() => this.DeletarUsuario(Usuario)}
-                                                >
-                                                    <img src={lixo} alt="" srcset="" />
-                                                </button>
-                                            </td>
+                                            {this.state.root ?
+                                                <td>
+                                                    <button id='btnExc'
+                                                        onClick={() => this.DeletarUsuario(Usuario)}
+                                                    >
+                                                        <img src={lixo} alt="" srcset="" />
+                                                    </button>
+                                                </td>
+                                                : ''}
+
                                         </tr>
                                     );
                                 })}

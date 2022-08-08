@@ -124,7 +124,7 @@ export default class CadastrarUsuarios extends Component {
                                                 <option key='2' value='2'>
                                                     Admin
                                                 </option>
-                                                <option key='3' value='3'>
+                                                <option key='3' value='4'>
                                                     Geral
                                                 </option>
                                             </select>
